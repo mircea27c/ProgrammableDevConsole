@@ -8,7 +8,7 @@ To create a console command you must add [ConsoleCommand("CommandName")] attribu
 For the command to work the method must:
 -Be public
 -Be static
--Have simple type parameters(float, int, string)
+-Have simple type parameters(float, int, string,bool)
 
 Example of working command:
 
