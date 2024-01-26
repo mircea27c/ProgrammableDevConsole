@@ -1,39 +1,46 @@
+<div align=center>
+
 # ProgrammableDevConsole
-Free programmable in-game console for Unity
 
-Instructions
+**ProgrammableDevConsole** is a free, in-game console for Unity that allows developers to create and execute custom commands. 
 
-To create a console command you must add [ConsoleCommand("CommandName")] attribute above your method.
+</div>
 
-For the command to work the method must:
--Be public
--Be static
--Have simple type parameters(float, int, string,bool)
+## Instructions
 
-Example of working command:
+To create a console command, follow these steps:
 
+1. Add the `[ConsoleCommand("CommandName")]` attribute above your method.
+2. Ensure that the method meets the following criteria:
+   - Be public
+   - Be static
+   - Have simple type parameters (float, int, string, bool)
+
+### Example of a working command:
+
+```csharp
 [ConsoleCommand("teleport")]
 public static void TeleportPlayer(float x, float y, float z){
-	Vector3 destination = new Vector3(x,y,z);
-	myPlayer.transform.position = destination;
+    Vector3 destination = new Vector3(x, y, z);
+    myPlayer.transform.position = destination;
 }
 
-usage in console:
-teleport 436.3 12.2 532
+```
 
+Usage in the console: `teleport 436.3 12.2 532`
 
+### Examples of incorrect commands:
 
-Example of wrong commands:
-
+```csharp
+// Incorrect: Parameter can't be GameObject
 [ConsoleCommand("delete")]
 public static void DeleteItem(GameObject item){
-	//code to delete item
+    // Code to delete item
 }
-problem: parameter can't be GameObject
 
+// Incorrect: Method must be static and public
 [ConsoleCommand("delete")]
 private void DeleteItem(string itemId){
-	//code to delete item
+    // Code to delete item
 }
-problem: method must be static and public
-
+```
